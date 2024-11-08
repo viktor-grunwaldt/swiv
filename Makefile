@@ -1,5 +1,11 @@
-WL_SCANNER = wayland-scanner
-WL_PROTOCOLS_DIR = /usr/share/wayland-protocols/
+# Host deps
+WAYLAND_FLAGS = $(shell $(PKG_CONFIG) wayland-client --cflags --libs)
+WAYLAND_PROTOCOLS_DIR = $(shell $(PKG_CONFIG) wayland-protocols --variable=pkgdatadir)
+
+# Build deps
+WAYLAND_SCANNER = $(shell pkg-config --variable=wayland_scanner wayland-scanner)
+
+XDG_SHELL_PROTOCOL = $(WAYLAND_PROTOCOLS_DIR)/stable/xdg-shell/xdg-shell.xml
 XDG_SHELL = $(WL_PROTOCOLS_DIR)/stable/xdg-shell/xdg-shell.xml
 XDG_DECORATION = $(WL_PROTOCOLS_DIR)/unstable/xdg-decoration/xdg-decoration-unstable-v1.xml
 
