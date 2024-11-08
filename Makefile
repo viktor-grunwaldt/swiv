@@ -1,3 +1,4 @@
+PKG_CONFIG ?= pkg-config
 # Host deps
 WAYLAND_FLAGS = $(shell $(PKG_CONFIG) wayland-client --cflags --libs)
 WAYLAND_PROTOCOLS_DIR = $(shell $(PKG_CONFIG) wayland-protocols --variable=pkgdatadir)
